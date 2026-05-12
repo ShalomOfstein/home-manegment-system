@@ -1,0 +1,18 @@
+services:
+  app:
+    build: ./containers/app
+    env_file:
+      - .env
+    volumes:
+      - ./volume/inventory.txt:/data/inventory.txt
+
+  proxy:
+    build: ./containers/proxy
+    ports:
+      - "80:80"
+    volumes:
+      - ./dashboard:/usr/share/nginx/html:ro
+    depends_on:
+      - app
+
+      
