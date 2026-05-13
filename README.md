@@ -23,26 +23,26 @@ The system is now split into two Docker services:
 
 ```txt
 HomeManagementSystem/
+├── docker-compose.yml          ← Orchestrates the app and proxy services
+├── .env                        ← Stores USER_NAME without hardcoding it in Python
+├── README.md                   ← Explains the project, setup, and architecture
+├── ANSWERS.md                  ← Answers to the theoretical questions
 │
 ├── containers/
 │   └── app/
-│       ├── app.py
-│       ├── requirements.txt
-│       ├── Dockerfile
-│       └── .dockerignore
-│
-├── dashboard/
-│   └── index.html
+│       ├── app.py              ← Python Flask app / Recipe Suggester API
+│       ├── Dockerfile          ← Builds the Python app image using python:3.9-slim
+│       ├── requirements.txt    ← Python dependencies, mainly Flask
+│       └── .dockerignore       ← Keeps unnecessary files out of the app image
 │
 ├── proxy/
-│   └── reverse_proxy.conf
+│   └── nginx.conf              ← Nginx config: / → dashboard, /api → Python app
 │
-├── volume/
-│   └── inventory.txt
+├── dashboard/
+│   └── index.html              ← Static dashboard UI served by Nginx
 │
-├── .env
-├── docker-compose.yml
-└── README.md
+└── volume/
+    └── inventory.txt           ← Inventory file, editable with live update
 ```
 
 ---
