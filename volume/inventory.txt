@@ -1,4 +1,9 @@
-tomatoes
-cheese
+milk
+eggs
 bread
-pasta
+suger
+chicken
+lettuce
+tomatoes
+cucumber
+dressing

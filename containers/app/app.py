@@ -6,6 +6,23 @@ app = Flask(__name__)
 USER_NAME = os.getenv("USER_NAME", "Guest")
 INVENTORY_PATH = "/data/inventory.txt"
 
+RECIPES = [
+    {"name": "Cheese omelette", "ingredients": ["eggs", "cheese"]},
+    {"name": "Pasta with tomato sauce", "ingredients": ["pasta", "tomatoes"]},
+    {"name": "Pancakes", "ingredients": ["milk", "eggs", "flour"]},
+    {"name": "Tomato salad", "ingredients": ["tomatoes", "cucumber", "onion"]},
+    {"name": "Grilled cheese", "ingredients": ["bread", "cheese", "butter"]},
+    {
+        "name": "Vegetable stir-fry",
+        "ingredients": ["broccoli", "carrots", "bell peppers", "soy sauce"],
+    },
+    {"name": "Fruit smoothie", "ingredients": ["banana", "berries", "yogurt", "honey"]},
+    {
+        "name": "Chicken salad",
+        "ingredients": ["chicken", "lettuce", "tomatoes", "cucumber", "dressing"],
+    },
+]
+
 
 def read_inventory():
     try:
@@ -16,20 +33,17 @@ def read_inventory():
         return []
 
 
-def suggest_recipe(items):
-    items_set = set(items)
+def suggest_recipe(inventory):
+    available_ingredients = set(inventory)
 
-    if {"eggs", "cheese"}.issubset(items_set):
-        return "Omelette with cheese"
+    for recipe in RECIPES:
+        required_ingredients = set(recipe["ingredients"])
 
-    if {"pasta", "tomatoes"}.issubset(items_set):
-        return "Pasta with tomato sauce"
+        if required_ingredients.issubset(available_ingredients):
+            return recipe["name"]
 
-    if {"milk", "eggs"}.issubset(items_set):
-        return "Pancakes"
-
-    if items:
-        return f"Simple meal using: {', '.join(items[:3])}"
+    if len(inventory) > 0:
+        return "No exact recipe found, but you have: " + ", ".join(inventory)
 
     return "No ingredients found. Please update inventory.txt."
 
