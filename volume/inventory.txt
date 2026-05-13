@@ -1,7 +1,7 @@
 milk
 eggs
 bread
-suger
+sugar
 chicken
 lettuce
 tomatoes
