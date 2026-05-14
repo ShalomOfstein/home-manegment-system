@@ -2,9 +2,9 @@
 
 ## Project Overview
 
-This project modernizes a small legacy home management system using Docker and Docker Compose.
+This project is a small home management system using Docker and Docker Compose.
 
-The original system included:
+The system included:
 
 - A Python recipe suggester
 - A manually edited `inventory.txt` file
