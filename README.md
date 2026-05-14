@@ -26,7 +26,7 @@ HomeManagementSystem/
 ├── docker-compose.yml          ← Orchestrates the app and proxy services
 ├── .env                        ← Stores USER_NAME without hardcoding it in Python
 ├── README.md                   ← Explains the project, setup, and architecture
-├── ANSWERS.md                  ← Answers to the theoretical questions
+├── Theoretical questions.pdf   ← Answers to the theoretical questions
 │
 ├── containers/
 │   └── app/
